@@ -1,0 +1,37 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font__heading;
+	color: $color__text-heading;
+	font-weight: $font__bold;
+	margin-top: 0;
+	margin-bottom: 2rem;
+}
+
+h1,
+.h1 {
+	font-size: clamp(2.25rem, 6vw, 3.75rem); //60
+}
+
+h2,
+.h2 {
+	font-size: clamp(2rem, 5vw, 3rem); //48
+}
+
+h3,
+.h3 {
+	font-size: clamp(1.125rem, 2vw, 1.5rem); //24
+}
+
+h4,
+.h4 {
+	font-size: clamp(1rem, 2vw, 1.25rem); //20
+}
+
+h5,
+.h5 {
+	font-size: clamp(.875rem, 1.5vw, 1.125rem); //18
+}

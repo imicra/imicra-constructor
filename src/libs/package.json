@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "slidetoggle": "^3.3.2"
+  },
+  "dependencies": {
+    "imask": "^6.4.3",
+    "inputmask": "^5.0.7"
+  }
+}

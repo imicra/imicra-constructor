@@ -1,0 +1,58 @@
+@use "sass:math";
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin centering {
+	position: absolute;
+  left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin absolute {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get($columns, $numberColumns) - math.div( $columns__margin * ( $numberColumns - 1 ), $numberColumns );
+}
+
+//Transition default
+@mixin transition($dur: .3s, $prop: all, $ease: ease-in-out) {
+	transition: $dur $prop $ease;
+}
+
+@mixin icon-box($bg: $color__interactive, $size: 70px, $font: 24px, $radius: 0) {
+	background-color: $bg;
+	width: $size;
+	height: $size;
+	font-size: $font;
+	line-height: $size;
+	color: #fff;
+	border-radius: $radius;
+}
+
+// Clearfix
+@mixin clearfix() {
+	&:before,
+	&:after {
+			content: "";
+			display: table;
+			table-layout: fixed;
+	}
+	&:after {
+			clear: both;
+	}
+}
+
+@import "fluid-typography";

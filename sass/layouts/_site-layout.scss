@@ -1,0 +1,21 @@
+// flex layout
+html,
+body {
+	height: 100%;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.site-main {
+  flex-grow: 1;
+}
+
+// sizes
+.site-wrapper {
+  width: 100%;
+  max-width: $size__max-width;
+}

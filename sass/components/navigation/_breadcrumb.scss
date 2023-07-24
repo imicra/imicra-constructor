@@ -1,0 +1,23 @@
+.breadcrumb {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  display: flex;
+
+  li {
+
+    &:not(:last-child) {
+      margin-right: .5em;
+    }
+
+    &:not(.active) {
+
+      &::after {
+        content: '/';
+        margin-left: .5em;
+      }
+    }
+
+    &.active {
+      color: $color__interactive;;
+    }
+  }
+}

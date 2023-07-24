@@ -1,0 +1,188 @@
+// colors
+.section-bg-interactive {
+  background: $color__background-interactive;
+}
+
+.section-bg-main {
+  background: $color__background-main;
+}
+
+.section-bg-dark {
+  background: $color__background-dark;
+}
+
+// redefine bootstrap text colors
+.text-primary {
+	color: $color__text-heading!important;
+}
+
+.text-secondary {
+	color: $color__text-main!important;
+}
+
+.color-interactive {
+	color: $color__interactive;
+}
+
+a.text-primary,
+a.text-secondary {
+
+  &:focus,
+  &:hover {
+    color: $color__interactive !important;
+  }
+}
+// text
+.text-underline {
+  text-decoration: underline;
+}
+
+// hover
+.hover-interactive {
+  
+  &:hover {
+    color: $color__interactive;
+  }
+}
+
+// links
+.link-interactive {
+  color: $color__interactive !important;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link-underline {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// shadows
+.text-shadow {
+  text-shadow: 0px 0px 3px rgba($color: #000000, $alpha: .3);
+}
+
+// borders colors
+.border-interactive {
+  border-color: $color__interactive !important;
+}
+
+// background colors
+.bg-interactive {
+  background: $color__interactive !important;
+}
+
+.bg-gradient {
+  // background: $gradient;
+}
+
+.bg-gradient-light {
+  // background: $gradient-light;
+}
+
+.bg-gray {
+  background-color: $gray-main;
+}
+
+// border-radus
+.border-radius-middle {
+  border-radius: 20px;
+}
+
+.border-radius-medium {
+  border-radius: 15px;
+}
+
+.border-radius-big {
+  border-radius: 41px;
+}
+
+// opacity
+.opacity-3 {
+  opacity: .3;
+}
+
+.opacity-5 {
+  opacity: .5;
+}
+
+.opacity-7 {
+  opacity: .7;
+}
+
+// positioning
+.block-absolute {
+  @include absolute;
+}
+
+.block-overlay {
+  background: rgba(0, 0, 0, .5);
+  pointer-events: none;
+  @include absolute;
+  @include transition;
+}
+
+.bg-image-cover img {
+  display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.block-centering {
+  @include centering;
+}
+
+// z-index
+@for $i from -1 through 10 {
+  .z-#{$i} {
+    z-index: $i;
+  }
+}
+
+// position
+.position-absolute-md {
+
+  @media screen and (min-width: $bp-md) {
+    position: absolute;
+  }
+}
+
+// positioning
+.t-0 {
+  top: 0;
+}
+
+.b-0 {
+  bottom: 0;
+}
+
+.l-0 {
+  left: 0;
+}
+
+.r-0 {
+  right: 0;
+}
+
+// overflow
+.overflow-hidden-x {
+  overflow-x: hidden;
+}
+
+// flex
+.items-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

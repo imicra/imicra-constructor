@@ -1,0 +1,137 @@
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea,
+select {
+	color: $color__text-input;
+	border: 1px solid $color__border-input;
+	border-radius: 3px;
+	padding: .5em;
+	width: 100%;
+
+	&::placeholder {
+		color: $color__text-input;
+	}
+
+	&:focus {
+		color: $color__text-input-focus;
+		outline: none;
+	}
+
+	&.form-not-valid {
+		border-bottom-color: red;
+	}
+}
+
+textarea {
+	width: 100%;
+}
+
+input[type=submit],
+button[type=submit] {
+	width: 100%;
+	cursor: pointer;
+
+	&:disabled,
+	&[disabled],
+	&.disabled {
+		cursor: not-allowed;
+	}
+}
+
+label {
+	line-height: 1;
+}
+
+// radio
+input[type=radio] {
+	appearance: none;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	border: 6px solid #fff;
+	background-color: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
+	@include transition;
+
+	&:checked {
+		background-color: $color__interactive;
+	}
+}
+
+// checkboxes
+input[type="checkbox"] {
+	display: none;
+
+	// like wpcf7
+	& + span {
+		position: relative;
+		padding-left: 2.5rem;
+		cursor: pointer;
+
+		&:before {
+			content: '';
+			background-color: transparent;
+			border: 1px solid $color__interactive;
+			padding: 7px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0px;
+		}
+
+		&:after {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0px;
+		}
+	}
+
+	&:checked {
+
+		& + span {
+
+			&:before {
+				background-color: transparent;
+				border-color: $color__interactive;
+			}
+
+			&:after {
+				content: '\2713';
+				font-size: 1rem;
+				font-weight: $font__bold;
+				position: absolute;
+				left: 0px;
+				color: $color__interactive;
+				background-color: transparent;
+			}
+		}
+	}
+}
+
+input[type="file"] {
+
+	&::-webkit-file-upload-button {
+		display: none;
+	}
+}
+
+// add
+.form-response-output {
+	font-size: .9em;
+	color: $color__interactive;
+	text-align: center;
+}

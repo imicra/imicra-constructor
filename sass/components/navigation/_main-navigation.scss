@@ -1,0 +1,239 @@
+.main-navigation {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	margin-left: auto;
+	@include transition;
+
+	@media screen and (max-width: $bp-lg) {
+		flex-direction: column;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		transform: translateY(-100%);
+		z-index: 10;
+	}
+
+	body.opened & {
+		transform: translateY(0);
+	}
+
+	.menu {
+		display: flex;
+		flex-direction: column;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+
+		@media screen and (min-width: $bp-lg) {
+			flex-direction: row;
+			align-items: center;
+			height: 100%;
+		}
+
+		li {
+			position: relative;
+			margin: .3em 0;
+			text-align: center;
+	
+			@media screen and (min-width: $bp-lg) {
+				height: 100%;
+				margin: 0 .5em;
+			}
+	
+			&:hover > .sub-menu,
+			&.focus > .sub-menu {
+				@media screen and (min-width: $bp-lg) {
+					display: flex;
+					flex-direction: column;
+					opacity: 1;
+					transform: translateY(100%);
+					visibility: visible;
+				}
+			}
+		}
+	}
+
+	a {
+		font-size: 18px;
+		display: flex;
+		align-items: center;
+		padding: .3em .8em;
+		position: relative;
+		white-space: nowrap;
+
+		@media screen and (min-width: $bp-lg) {
+			font-size: clamp(1em, 1.7vw, 20px);
+			height: 100%;
+			padding: .5em .8em;
+		}
+
+		.chevron {
+			margin-left: auto;
+			border: 1px solid $color__text-heading;
+			padding: 0.5em;
+			border-radius: 50%;
+			height: 30px;
+			width: 30px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			@media screen and (min-width: $bp-lg) {
+				margin-left: 1em;
+				border: none;
+				padding: 0;
+				width: auto;
+				height: auto;
+			}
+
+			i {
+				border-style: solid;
+				border-width: 0.15em 0.15em 0 0;
+				display: inline-block;
+				height: 0.5em;
+				left: 0;
+				position: relative;
+				top: 0;
+				transform: rotate(135deg);
+				vertical-align: top;
+				width: 0.5em;
+				@include transition;
+			}
+		}
+
+		&.expanded {
+			i {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a,
+	.current-menu-ancestor > a {
+		color: $color__interactive;
+		font-weight: $font__bold;
+	}
+
+	.sub-menu {
+		background: transparent;
+		padding: 0 .5em;
+		max-height: 0;
+		overflow: hidden;
+		@include transition;
+
+		@media screen and (min-width: $bp-lg) {
+			background: #fff;
+			opacity: 0;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 320px;
+			max-height: initial;
+			transform: translateY(90%);
+			visibility: hidden;
+		}
+
+		li {
+			&:not(:last-child) {
+				border-bottom: 1px solid #eee;
+			}
+
+			a {
+				padding: .5em 1em;
+			}
+		}
+	}
+}
+
+.menu-toggle {
+	display: block;
+	background-color: $color__interactive;
+	border: 1px solid $color__interactive;
+	border-radius: 50%;
+	padding: 0;
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	width: 48px;
+	height: 48px;
+	transform: translateY(-50%);
+	cursor: pointer;
+	z-index: 11;
+
+	&:hover,
+	&:focus,
+	&:active {
+		border-color: $color__interactive;
+	}
+
+	&-inner {
+		width: 16px;
+		height: 16px;
+    position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+
+		&::before,
+		&::after {
+			position: absolute;
+			display: block;
+			content: "";
+			color: #fff;
+			border-top-width: 2px;
+			border-top-style: solid;
+			left: 0;
+			right: 0;
+			top: 0;
+		}
+
+		&::after {
+			top: auto;
+			bottom: 0;
+		}
+
+		body.opened & {
+			&::before,
+			&::after {
+				top: 50%;
+				bottom: auto;
+			}
+
+			&::before {
+				transform: rotate(45deg);
+			}
+
+			&::after {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+
+	&-holder {
+		position: absolute;
+    display: block;
+		border-top-color: #fff;
+    border-top-width: 2px;
+    border-top-style: solid;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -1px;
+    transform: scaleX(1);
+
+		body.opened & {
+			transform: scaleX(0);
+		}
+	}
+
+	@media screen and (min-width: 992px) {
+		display: none;
+	}
+}

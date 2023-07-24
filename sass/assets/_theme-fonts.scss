@@ -1,0 +1,16 @@
+/* FONT PATH
+ * -------------------------- */
+
+@font-face {
+  font-family: 'PF Din';
+  src: url('#{$font-path}/pfdin-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PF Din';
+  src: url('#{$font-path}/pfdin-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

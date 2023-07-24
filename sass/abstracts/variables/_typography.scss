@@ -1,0 +1,15 @@
+// stylelint-disable value-keyword-case
+$font__main: 'Open Sans', sans-serif;
+$font__heading: $font__main;
+// stylelint-enable value-keyword-case
+$font__code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", courier, monospace;
+$font__line-height-body: 1.5;
+$font__line-height-pre: 1.6;
+
+$font__light: 300;
+$font__normal: 400;
+// $font__semi-bold: 500;
+$font__bold: 700;
+
+$font-path: "../fonts/theme-fonts";
