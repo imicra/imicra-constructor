@@ -3,6 +3,7 @@
     "slidetoggle": "^3.3.2"
   },
   "dependencies": {
+    "choices.js": "^10.2.0",
     "imask": "^6.4.3",
     "inputmask": "^5.0.7"
   }

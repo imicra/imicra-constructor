@@ -2,6 +2,7 @@ import {toggle, subMenu} from './modules/navigation';
 import {initModals} from './modules/modals/init-modals';
 import {formsValidate} from './modules/validation';
 import {formCta} from './modules/forms-cta';
+import { choices } from "./modules/choises";
 // import {cf7} from './modules/cf7';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +26,11 @@ window.addEventListener('DOMContentLoaded', () => {
    * Form CTA on frontpage submit
    * --------------------------------------------------------------------------- */
   formCta();
+
+  /* ---------------------------------------------------------------------------
+   * choices library for select
+   * --------------------------------------------------------------------------- */
+  choices();
 
   /* ---------------------------------------------------------------------------
    * Cotact Form 7

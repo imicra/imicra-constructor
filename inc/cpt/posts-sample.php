@@ -9,6 +9,33 @@ function imicra_sample_posttypes() {
     $singular_name = 'Тип';
     $plural_name = 'Типы';
     $variant_name = 'Типов';
+    $singular_cat = 'Категория';
+    $plural_cat = 'Категории';
+    $variant_cat = 'Категорий';
+
+    register_taxonomy( 'sample_cat', array( 'sample' ), array(
+        'labels'              => array(
+          'name'              => $plural_cat,
+          'singular_name'     => $singular_cat,
+          'search_items'      => sprintf( 'Искать %s', $plural_cat ),
+          'all_items'         => sprintf( 'Все %s', $plural_cat ),
+          'edit_item'         => sprintf( 'Редактировать %s', $singular_cat ),
+          'update_item'       => sprintf( 'Обновить %s', $singular_cat ),
+          'add_new_item'      => sprintf( 'Добавить Новый %s', $singular_cat ),
+          'new_item_name'     => sprintf( 'Новый %s', $singular_cat ),
+          'menu_name'         => $plural_cat,
+          'not_found'         => sprintf( 'Не найдено %s.', $variant_cat ),
+        ),
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => true,
+        'show_in_rest'        => false,
+        'hierarchical'        => true,
+        'rewrite'             => array( 'slug' => 'sample-cat' ),
+        'query_var'           => true,
+        'meta_box_cb'         => 'post_categories_meta_box',
+        'show_admin_column'   => true,
+    ) );
 
     register_post_type( 'sample', array(
         'labels'              => array(

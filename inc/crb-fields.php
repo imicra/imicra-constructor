@@ -25,4 +25,4 @@ require_once dirname( __FILE__ ) . '/crb-metaboxes/crb-builder.php';
 function crb_enqueue_admin_scripts() {
 	wp_enqueue_script( 'crb-admin', get_stylesheet_directory_uri() . '/assets/js/admin.js', array( 'carbon-fields-yoast' ) );
 }
-add_action( 'admin_enqueue_scripts', 'crb_enqueue_admin_scripts' );
+// add_action( 'admin_enqueue_scripts', 'crb_enqueue_admin_scripts' );

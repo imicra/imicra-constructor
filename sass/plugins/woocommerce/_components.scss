@@ -536,6 +536,7 @@ p.stars {
 		}
 	
 		.woocommerce-input-wrapper {
+			display: block;
 			position: relative;
 			width: 100%;
 
@@ -554,7 +555,7 @@ p.stars {
 		}
 	
 		&.woocommerce-invalid-required-field span.error {
-			opacity: 1!important;
+			visibility: visible !important;
 		}
 	
 		// &.woocommerce-validated {
