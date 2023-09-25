@@ -6,7 +6,7 @@
  */
 
 $taxnames = array(
-  'design_cat',
+  'custom_cat',
 );
 
 foreach ( $taxnames as $taxname ) {

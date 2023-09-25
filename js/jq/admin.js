@@ -2,17 +2,8 @@
   "use strict";
 
   /* ---------------------------------------------------------------------------
-   * Carbon Fields Yoast
+   * Admin area
    * --------------------------------------------------------------------------- */
-  var $doc = $(document);
-  var $win = $(window);
-
-  $doc.ready(function () {
-    $win.on('YoastSEO:ready', function () {
-      new CarbonFieldsYoast();
-    });
-  });
-
   $(document).ready(function () {
     var mediaUploader,
       metaBox = $('.imicra-term-group'),
