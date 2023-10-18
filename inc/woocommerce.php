@@ -139,6 +139,21 @@ function imicra_localize_dimensions_units( $dimensions ) {
 add_filter( 'woocommerce_format_dimensions', 'imicra_localize_dimensions_units' );
 
 /**
+ * Format decimals in price
+ */
+function imicra_decimal_price( $formatted_price, $price, $decimal_places, $decimal_separator, $thousand_separator ) {
+	$unit = number_format( intval( $price ), 0, $decimal_separator, $thousand_separator );
+	$decimal = $price - intval( $price );
+
+	if ( $decimal > 0 ) {
+		return $formatted_price;
+	}
+
+	return $unit;
+}
+add_filter( 'formatted_woocommerce_price', 'imicra_decimal_price', 10, 5 );
+
+/**
  * Remove default WooCommerce wrapper.
  */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
@@ -244,6 +259,41 @@ function imicra_checkout_fields_in_label_error( $field, $key, $args, $value ) {
 add_filter( 'woocommerce_form_field', 'imicra_checkout_fields_in_label_error', 10, 4 );
 
 /**
+ * Ajax add to cart for single product
+ */
+function imicra_ajax_add_to_cart_cb() {
+	$product_id        = apply_filters( 'woocommerce_add_to_cart_product_id', absint( $_POST['product_id'] ) );
+	$quantity          = empty( $_POST['quantity'] ) ? 1 : wc_stock_amount( wp_unslash( $_POST['quantity'] ) );
+	$variation_id      = absint( $_POST['variation_id'] );
+	$passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
+	$product_status    = get_post_status( $product_id );
+
+	if ( $passed_validation && WC()->cart->add_to_cart($product_id, $quantity, $variation_id) && 'publish' === $product_status ) {
+		
+		do_action( 'woocommerce_ajax_added_to_cart', $product_id );
+
+		if ( 'yes' === get_option( 'woocommerce_cart_redirect_after_add' ) ) {
+			wc_add_to_cart_message( array( $product_id => $quantity ), true );
+		}
+
+		WC_AJAX :: get_refreshed_fragments();
+
+	} else {
+
+		$data = array(
+			'error'       => true,
+			'product_url' => apply_filters( 'woocommerce_cart_redirect_after_error', get_permalink( $product_id ), $product_id ),
+		);
+
+		echo wp_send_json( $data );
+	}
+
+	wp_die();
+}
+add_action( 'wp_ajax_imicra_ajax_add_to_cart', 'imicra_ajax_add_to_cart_cb' );
+add_action( 'wp_ajax_nopriv_imicra_ajax_add_to_cart', 'imicra_ajax_add_to_cart_cb' );
+
+/**
  * Sample implementation of the WooCommerce Mini Cart.
  *
  * You can add the WooCommerce Mini Cart to header.php like so ...
@@ -297,41 +347,6 @@ if ( ! function_exists( 'imicra_woocommerce_cart_link' ) ) {
 		<?php
 	}
 }
-
-/**
- * Ajax add to cart for single product
- */
-function imicra_ajax_add_to_cart_cb() {
-	$product_id        = apply_filters( 'woocommerce_add_to_cart_product_id', absint( $_POST['product_id'] ) );
-	$quantity          = empty( $_POST['quantity'] ) ? 1 : wc_stock_amount( wp_unslash( $_POST['quantity'] ) );
-	$variation_id      = absint( $_POST['variation_id'] );
-	$passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
-	$product_status    = get_post_status( $product_id );
-
-	if ( $passed_validation && WC()->cart->add_to_cart($product_id, $quantity, $variation_id) && 'publish' === $product_status ) {
-		
-		do_action( 'woocommerce_ajax_added_to_cart', $product_id );
-
-		if ( 'yes' === get_option( 'woocommerce_cart_redirect_after_add' ) ) {
-			wc_add_to_cart_message( array( $product_id => $quantity ), true );
-		}
-
-		WC_AJAX :: get_refreshed_fragments();
-
-	} else {
-
-		$data = array(
-			'error'       => true,
-			'product_url' => apply_filters( 'woocommerce_cart_redirect_after_error', get_permalink( $product_id ), $product_id ),
-		);
-
-		echo wp_send_json( $data );
-	}
-
-	wp_die();
-}
-add_action( 'wp_ajax_imicra_ajax_add_to_cart', 'imicra_ajax_add_to_cart_cb' );
-add_action( 'wp_ajax_nopriv_imicra_ajax_add_to_cart', 'imicra_ajax_add_to_cart_cb' );
 
 if ( ! function_exists( 'imicra_woocommerce_header_cart' ) ) {
 	/**

@@ -20,7 +20,7 @@
 * `wp-config.php` прописать новую БД `DB_NAME`
 * В терминале перейти в директорию с установленным WP
 * `wp db create`
-* `wp core install --url=wpclidemo.dev --title="WP-CLI" --admin_user=wpcli --admin_password=wpcli --admin_email=info@wp-cli.org`
+* `wp core install --url=https://wpclidemo.dev --title="WP-CLI" --admin_user=wpcli --admin_password=wpcli --admin_email=info@wp-cli.org`
 * В терминале перейти в директорию с темой
 * `composer install`
 * В терминале перейти в директорию с темой в `src/libs`

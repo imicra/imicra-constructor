@@ -3,7 +3,7 @@ import IMask from '../../src/libs/node_modules/imask';
 
 const formsValidate = () => {
   const telInputs = document.querySelectorAll('input[type=tel]');
-  const emailInputs = document.querySelectorAll('.form-email');
+  const emailInputs = document.querySelectorAll('input[type=email]');
 
   telInputs.forEach(element => {
     let maskOptions = {

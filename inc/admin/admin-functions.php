@@ -50,7 +50,7 @@ function imicra_remove_posts_from_nav_menus( $args, $post_type ) {
 }
 add_filter( 'register_post_type_args', 'imicra_remove_posts_from_nav_menus', 20, 2 );
 
-// remove catrgory from nav menus
+// remove category from nav menus
 function imicra_remove_catrgory_from_nav_menus( $args, $taxonomy, $object_type ) {
   if ( 'category' == $taxonomy || 'post_tag' == $taxonomy ) {
     $args['show_in_nav_menus'] = false;

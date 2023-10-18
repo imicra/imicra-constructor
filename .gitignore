@@ -3,3 +3,5 @@
 
 src/libs/node_modules
 src/libs/package-lock.json
+
+src/sass

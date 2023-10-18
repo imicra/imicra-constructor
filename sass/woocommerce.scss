@@ -4,6 +4,9 @@ Theme Name: imicra
 WooCommerce styles override
 */
 
+// Import variables and mixins
+@import "abstracts/abstracts";
+
 // WooCommerce color variables
 $woocommerce__color-error: #e2401c;
 $woocommerce__color-success: #0f834d;
@@ -41,6 +44,11 @@ $woocommerce__color-info: #3d9cd2;
  * WooCommerce widgets
  */
 @import "plugins/woocommerce/widgets";
+
+/**
+ * Cart
+ */
+ @import "plugins/woocommerce/cart";
 
 /**
  * WooCommerce account

@@ -1,7 +1,7 @@
 import { fieldsValids } from "./fields-valids";
 
 const formCta = () => {
-  const forms = document.querySelectorAll('form');
+  const forms = document.querySelectorAll('.form-cta');
 
   forms.forEach(form => {  
     form.addEventListener('submit', e => {

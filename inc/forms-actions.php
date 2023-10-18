@@ -8,8 +8,8 @@
  */
 function imicra_form_cta_cb() {
   // $_POST data
-  $name = wp_strip_all_tags( $_POST['cta-name'] );
-  $tel = wp_strip_all_tags( $_POST['cta-phone'] );
+  $name = wp_strip_all_tags( $_POST['name'] );
+  $phone = wp_strip_all_tags( $_POST['phone'] );
 
   // prepare email
   $imicra_site_options_mail = get_option( 'imicra_mail' );
@@ -19,8 +19,15 @@ function imicra_form_cta_cb() {
   $to = [];
 	$to[] = $email_admin;
 	$subject = "Форма Телефон с сайта \"$sitename\"";
-  $message .= "Имя: <b>{$name}</b><br>";
-  $message .= "Телефон: <b>{$tel}</b><br>";
+
+  $message = '';
+
+  if ( ! empty( $name ) ) {
+    $message .= "Имя: <b>{$name}</b><br>";
+  }
+  if ( ! empty( $phone ) ) {
+    $message .= "Телефон: <b>{$phone}</b><br>";
+  }
 	$headers[] = 'From: Сайт <info@' . $host . '>';
   $headers[] = 'Content-Type: text/html';
   $headers[] = 'charset=UTF-8';

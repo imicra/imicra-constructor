@@ -31,7 +31,7 @@ select {
 	}
 
 	&.form-not-valid {
-		border-bottom-color: red;
+		border-bottom-color: red !important;
 	}
 }
 
