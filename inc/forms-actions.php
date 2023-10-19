@@ -38,7 +38,7 @@ function imicra_form_cta_cb() {
       'message' => 'Спасибо! Ваше сообщение отправлено'
     );
   
-    echo wp_send_json( $data );
+    wp_send_json( $data );
   }
 
   wp_die();

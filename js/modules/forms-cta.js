@@ -29,7 +29,6 @@ const formCta = () => {
                 input.value = '';
               });
             }
-            // console.log(response.message);
           }
         })
         .catch(error => console.log(error));
