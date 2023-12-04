@@ -33,11 +33,11 @@ function bootstrap_breadcrumb() {
   $html = '<ol class="breadcrumb">';
   
   if ( (is_front_page()) || (is_home()) ) {
-    $html .= '<li class="breadcrumb-item active">Home</li>';
+    $html .= '<li class="breadcrumb-item active">Главная</li>';
   }
   
   else {
-    $html .= '<li class="breadcrumb-item"><a href="'.esc_url(home_url('/')).'">Home</a></li>';
+    $html .= '<li class="breadcrumb-item"><a href="'.esc_url(home_url('/')).'">Главная</a></li>';
     
     if ( is_attachment() ) {
       $parent = get_post($post->post_parent);
@@ -90,6 +90,19 @@ function bootstrap_breadcrumb() {
       }
       
       $html .= '<li class="breadcrumb-item active">' . get_the_title() . '</li>';
+    }
+
+    elseif ( is_post_type_archive() || is_singular() ) {
+      $post_type = get_post_type_object( get_post_type( $post ) );
+      $title = $post_type->labels->name;
+      $name = $post_type->name;
+
+      if ( is_post_type_archive() ) {
+        $html .= '<li class="breadcrumb-item active">' . $title . '</li>';
+      } else {
+        $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_post_type_archive_link( $name ) ) . '">' . $title . '</a></li>';
+        $html .= '<li class="breadcrumb-item active">' . get_the_title() . '</li>';
+      }
     }
     
     elseif ( is_tag() ) {

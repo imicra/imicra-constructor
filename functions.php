@@ -208,8 +208,6 @@ function imicra_scripts() {
 
 	wp_enqueue_script( 'imicra-scripts', get_template_directory_uri() . "/assets/js/scripts{$min}.js", array(), _S_VERSION, true );
 
-	// wp_enqueue_script( 'imicra-wc', get_template_directory_uri() . "/assets/js/woocommerce.js", array( 'jquery' ), _S_VERSION, true );
-
 	wp_localize_script( 'imicra-scripts', 'imicra',
 		array(
 			'debug' => SCRIPT_DEBUG,
