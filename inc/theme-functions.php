@@ -78,3 +78,23 @@ function imicra_format_phone( $string, $html = true ) {
 function im_wpautop( $string ) {
   return preg_replace( array( '/<p>/', '/<\/p>/' ), array( '', '' ), wpautop( $string ) );
 }
+
+/**
+ * Function to get post ID given the post title.
+ */
+function imicra_get_post_id_by_title( string $title = '', string $post_type = 'post' ): int {
+  $posts = get_posts(
+      array(
+          'post_type'              => $post_type,
+          'title'                  => $title,
+          'numberposts'            => 1,
+          'update_post_term_cache' => false,
+          'update_post_meta_cache' => false,
+          'orderby'                => 'post_date ID',
+          'order'                  => 'ASC',
+          'fields'                 => 'ids'
+      )
+  );
+
+  return empty( $posts ) ? get_the_ID() : $posts[0];
+}
