@@ -49,12 +49,12 @@ function imicra_woocommerce_scripts() {
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
-			font-family: "star";
-			src: url("' . $font_path . 'star.eot");
-			src: url("' . $font_path . 'star.eot?#iefix") format("embedded-opentype"),
-				url("' . $font_path . 'star.woff") format("woff"),
-				url("' . $font_path . 'star.ttf") format("truetype"),
-				url("' . $font_path . 'star.svg#star") format("svg");
+			font-family: "WooCommerce";
+			src: url("' . $font_path . 'WooCommerce.eot");
+			src: url("' . $font_path . 'WooCommerce.eot?#iefix") format("embedded-opentype"),
+				url("' . $font_path . 'WooCommerce.woff") format("woff"),
+				url("' . $font_path . 'WooCommerce.ttf") format("truetype"),
+				url("' . $font_path . 'WooCommerce.svg#WooCommerce") format("svg");
 			font-weight: normal;
 			font-style: normal;
 		}';
