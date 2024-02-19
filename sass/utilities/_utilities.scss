@@ -186,3 +186,31 @@ a.text-secondary {
 .cursor-pointer {
   cursor: pointer;
 }
+
+// aspect ratio
+.aspect-ratio {
+  display: flex;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+  }
+
+  img,
+  iframe {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    @include absolute;
+  }
+}
+
+.ratio-100 {
+
+  &::before {
+    padding-bottom: 100%;
+  }
+}

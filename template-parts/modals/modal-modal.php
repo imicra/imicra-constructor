@@ -19,3 +19,17 @@
     </div>
   </div>
 </div>
+
+<div class="modal modal--preload modal--success success transparent">
+  <div class="modal__wrapper">
+    <div class="modal__content">
+      <button class="modal__close-btn hover" type="button" aria-label="Закрыть попап">
+        <?php echo imicra_get_svg( array( 'icon' => 'cross' ) ); ?>
+      </button>
+      <div class="text-center">
+        <h2 class="h1">Спасибо!</h2>
+        <p>Ваша заявка успешно отправлена</p>
+      </div>
+    </div>
+  </div>
+</div>
