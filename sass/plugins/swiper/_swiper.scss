@@ -1,3 +1,6 @@
+@import '../../src/libs/node_modules/swiper/swiper.min.css';
+// @import '../../src/libs/node_modules/swiper/swiper-bundle.min.css';
+
 .slider-container {
   position: relative;
   overflow: hidden;
@@ -10,7 +13,7 @@
     border: 1px solid #D1CFCF;
     opacity: 1;
   }
-  
+
   .swiper-pagination-bullet-active {
     border-color: $color__interactive;
     background-color: $color__interactive;
