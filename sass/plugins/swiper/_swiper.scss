@@ -19,6 +19,10 @@
     background-color: $color__interactive;
     opacity: 1;
   }
+
+  .swiper-pagination-lock {
+    display: none;
+  }
 }
 
 // buttons
