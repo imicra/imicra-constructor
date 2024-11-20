@@ -35,7 +35,7 @@ function imicra_testimonials_posttypes() {
         'show_in_menu'        => true,
         'show_in_nav_menus'   => false,
         'menu_position'       => 35,
-        'menu_icon'           => 'dashicons-id-alt',
+        'menu_icon'           => 'dashicons-testimonial',
         'capability_type'     => 'post',
         'hierarchical'        => false,
         'supports'            => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),

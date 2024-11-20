@@ -283,6 +283,13 @@ remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
 
 /**
+ * Remove error messages in login form.
+ */
+add_filter( 'login_errors', function ( $message ) {
+  return "Invalid username or password.";
+});
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';

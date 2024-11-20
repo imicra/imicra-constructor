@@ -116,14 +116,6 @@ function imicra_hide_editor( $use_block_editor, $post_type ) {
 }
 add_filter( 'use_block_editor_for_post', 'imicra_hide_editor', 10, 2 );
 
-/*
- * FontAwesome Shortcode.
- */
-function icon_fa( $atts ) {
-	return '<i class="fa fa-' . $atts[0] . '"></i>';
-}
-add_shortcode( 'fa', 'icon_fa' );
-
 /**
  * Use a Non-Breaking Space in WYSIWYG
  */
@@ -134,3 +126,20 @@ function allow_nbsp_in_tinymce( $init ) {
   return $init;
 }
 add_filter( 'tiny_mce_before_init', 'allow_nbsp_in_tinymce' );
+
+/**
+ * Allow SVG through WordPress Media Uploader
+ */
+function imicra_mime_types( $mimes ) {
+  $mimes['svg'] = 'image/svg+xml';
+
+  return $mimes;
+}
+add_filter('upload_mimes', 'imicra_mime_types');
+
+function restrict_upload_mimes() {
+  if (current_user_can( 'administrator') && !defined('ALLOW_UNFILTERED_UPLOADS')){
+      define('ALLOW_UNFILTERED_UPLOADS', true);
+  }
+}
+add_action( 'admin_init', 'restrict_upload_mimes', 1 );
