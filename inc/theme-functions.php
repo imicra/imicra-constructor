@@ -98,3 +98,39 @@ function imicra_get_post_id_by_title( string $title = '', string $post_type = 'p
 
   return empty( $posts ) ? get_the_ID() : $posts[0];
 }
+
+/**
+ * Get page ID with certain template
+ *
+ * @param string $tpl template's file name only.
+ */
+function imicra_tpl_ID( $tpl ) {
+  $pages = get_pages( array(
+    'meta_key' => '_wp_page_template',
+    'meta_value' => $tpl,
+    'hierarchical' => 0
+  ) );
+
+  return $pages[0]->ID;
+}
+
+/**
+ * Get page url with certain template
+ *
+ * @param string $tpl template's file name only.
+ */
+function imicra_tpl_url( $tpl ) {
+  $tpl_url = '';
+
+  $pages = get_pages( array(
+    'meta_key' => '_wp_page_template',
+    'meta_value' => $tpl,
+    'hierarchical' => 0
+  ) );
+
+  if ( isset( $pages[0] ) ) {
+    $tpl_url = get_page_link( $pages[0]->ID );
+  }
+
+  return $tpl_url;
+}
