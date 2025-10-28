@@ -7,7 +7,7 @@
 
 function imicra_add_admin_page() {
   // Create imicra Admin Page
-  add_menu_page( 'Настройки сайта', 'Imicra', 'manage_options', 'imicra_settings', 'imicra_theme_admin_page_cb', 'dashicons-admin-generic', 110 );
+  add_menu_page( 'Настройки сайта', wp_get_theme()->get( 'Name' ), 'manage_options', 'imicra_settings', 'imicra_theme_admin_page_cb', 'dashicons-admin-generic', 110 );
 
   // Create imicra Admin Sub Page
   add_submenu_page( 'imicra_settings', 'Основные настройки сайта', 'Основные', 'manage_options', 'imicra_settings', 'imicra_theme_admin_page_cb' );
