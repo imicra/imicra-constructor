@@ -16,6 +16,11 @@
 require_once dirname( __FILE__ ) . '/blocks.php';
 
 /**
+ * Posts table's columns.
+ */
+require_once dirname( __FILE__ ) . '/post-columns.php';
+
+/**
  * Admin Menu.
  */
 require_once dirname( __FILE__ ) . '/admin-menu.php';
